@@ -1,0 +1,97 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ article.title }}</title>
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      line-height: 1.6;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+
+    .article-container {
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 40px;
+      background-color: white;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      border-radius: 10px;
+    }
+
+    .article-title {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #032b44;
+    }
+
+    .article-meta {
+      color: #666;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+
+    .article-abstract {
+      background-color: #eef6fa;
+      border-left: 5px solid #1f5270;
+      padding: 15px;
+      margin-bottom: 30px;
+    }
+
+    /* .article-content {
+      white-space: pre-wrap;
+      font-size: 1rem;
+    } */
+   .article-content {
+  white-space: normal;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+
+
+    .back-button {
+      margin-top: 30px;
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #1f5270;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+
+    .back-button:hover {
+      background-color: #15425b;
+    }
+  </style>
+</head>
+<body>
+
+<div class="article-container">
+  <div class="article-title">{{ article.title }}</div>
+  <div class="article-meta">By {{ article.author.first_name }} {{ article.author.last_name }} • {{ article.published_at|date:"F j, Y" }}</div>
+
+  <div class="article-abstract">
+    <strong>Abstract:</strong><br>
+    {{ article.abstract }}
+  </div>
+
+ <div class="article-content">
+  {% if article_text %}
+    {{ article_text|linebreaks }}
+  {% else %}
+    <p>No readable content extracted.</p>
+  {% endif %}
+</div>
+
+
+  <a href="{% url 'home' %}" class="back-button">← Back to Home</a>
+</div>
+
+</body>
+</html>

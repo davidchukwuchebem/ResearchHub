@@ -1,0 +1,27 @@
+<div class="card"
+     onclick="openArticleModal(this)"
+     data-title="{{ article.title }}"
+     data-author="{{ article.author.username }}"
+     data-year="{{ article.published_at|date:'Y' }}"
+     data-abstract="{{ article.abstract }}"
+     data-download-url="{{ article.content_file.url }}"
+     data-view-url="{% url 'article_detail' article.id %}">
+  <div class="title">{{ article.title }}</div>
+  <div class="author">{{ article.author.username }} • {{ article.published_at|date:"Y" }}</div>
+  <div class="abstract">{{ article.abstract|truncatewords:25 }}</div>
+</div>
+
+<!-- Article Detail Modal -->
+<div id="articleDetailModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeArticleModal()">&times;</span>
+    <h2 id="modalArticleTitle"></h2>
+    <p><strong>Author:</strong> <span id="modalArticleAuthor"></span></p>
+    <p><strong>Published:</strong> <span id="modalArticleYear"></span></p>
+    <p id="modalArticleAbstract" style="margin-top: 15px;"></p>
+    <div style="margin-top: 20px;">
+      <a id="modalDownloadBtn" class="button" download style="margin-right: 10px; text-decoration: none; color: white;">Download</a>
+      <a id="modalViewBtn" class="button" style=" text-decoration: none; color: white;" target="_blank">View</a>
+    </div>
+  </div>
+</div>

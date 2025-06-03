@@ -1,0 +1,167 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'component.css' %}">
+    <link rel="stylesheet" href="component.css">
+    <title>Research Hub | Signup</title>
+</head>
+    <style>
+         /* === Reset & base === */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+      body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #1a1a2e, #16213e);
+      /* background-image: url("newspapers.jpg"); */
+      background-size: cover;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      /* margin-top: 5%; */
+    }
+    
+    .card {
+      width: 400px;
+      margin-top: 3%;
+      max-width: 400px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      backdrop-filter: blur(15px);
+      color: #374468;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      transition: all 0.4s ease;
+      cursor: pointer;
+      overflow: hidden;
+      padding: 30px;
+    }
+
+    form input{
+        width: 100%;
+        background-color: #1a1a2e;
+        border-radius: 10px;
+        padding: 15px 10px;
+        border: none;
+        margin-bottom: 10px;
+    }
+    
+    .submit{
+        margin-bottom: 10px;
+        margin-top: 10px;
+        width: 100%;
+        border: none;
+        background-color: #16213e;
+        padding: 15px 10px;
+        border-radius: 10px;
+        font-weight: bold;
+        color: white;
+    }
+
+    main h1, h3{
+        text-align: center;
+        /* color: white; */
+        color: #374468;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+    }
+
+
+    .hero-img{
+        max-width: 500px;
+        border-radius: 80px;
+        height: 500px;
+        width: 500px;
+        background-image: url("research-bg.webp");
+        background-size: cover;
+    }
+
+
+    .carousel-node{
+        display: flex;
+        margin-top: 5px;
+    }
+
+    .carousel-node button{
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background-color: white;
+        margin-inline: 2px;
+        border: none;
+        cursor: pointer;
+    }
+
+    .carousel-node button:hover{
+        background-color: #374468;
+    }
+
+    .node-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    form a{
+        /* color: white; */
+        color: #374468;
+    text-decoration: none;        
+}
+
+form a span{
+            font-weight: bold;
+    }
+
+    .head{
+      text-align: center;
+    }
+    </style>
+<body>
+     <main>
+        <div class="head">
+          <!-- <h1>Signup to Upload your Research</h1> -->
+        </div>
+    <div class="card">
+            <div class="card-content">
+              <h1>Signup</h1>
+              <form action="" method="post">
+                  {% csrf_token %}
+                  <div class="input-group">
+                      <label for="firstname">Firstname</label>
+                    <input type="text" name="firstname" placeholder="firstname">
+                  </div>
+                  <div class="input-group">
+                      <label for="lastname">Lastname</label>
+                    <input type="text" name="lastname" placeholder="lastname">
+                  </div>
+                  <div class="input-group">
+                      <label for="username">Username</label>
+                    <input type="text" name="username" placeholder="username">
+                  </div>
+                  <div class="input-group">
+                      <label for="email">Email</label>
+                    <input type="text" name="email" placeholder="email">
+                  </div>
+                  <div class="input-group">
+                      <label for="password">Password</label>
+                    <input type="text" name="password" placeholder="password">
+                  </div>
+                  <div class="input-group">
+                      <label for="confirm-password">Confirm password</label>
+                    <input type="text" name="confirm-password" placeholder="confirm-password">
+                  </div>
+                  <button class="submit" type="submit">Signup</button>
+                  <a href="{% url 'signin' %}">Already have an account? <span>Login</span></a>
+                </form>
+            </div>
+        </div>
+    </main>
+  
+</body>
+</html>

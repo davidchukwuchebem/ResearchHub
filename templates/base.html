@@ -1,0 +1,112 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="{% static 'component.css' %}">
+  <title>{% block ResearchHub %}{% endblock %}</title>
+</head>
+<body>
+
+<header>
+  <h3>Research Hub</h3>
+
+  <div class="menu-toggle" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <nav class="side-nav" id="sideNav">
+    <ul>
+      <!-- <li><a href="#">Library</a></li> -->
+      <!-- <li><a href="#">Forum</a></li> -->
+      <li><a href="{% url 'user_profile' %}" class="current">Profile</a></li>
+      <li><a href="{% url 'home' %}" class="current">Discover</a></li>
+      <li><a href="#" class="current" onclick="openModal()">Create</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- Modal -->
+<div id="articleModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()" aria-label="Close">&times;</span>
+    <h2>Create New Article</h2>
+    <form id="articleForm" action="{% url 'create_article' %}" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <label for="title">Title</label>
+      <input type="text" name="title" id="title" required>
+
+      <label for="category">Category</label>
+      <select id="category" name="category" required>
+        <option value="" disabled selected>Select category</option>
+        <option value="education">Education & Learning</option>
+        <option value="technology">Technology</option>
+        <option value="health">Health</option>
+        <option value="finance">Finance</option>
+        <option value="entertainment">Entertainment</option>
+        <option value="travel">Travel</option>
+        <option value="personal_dev">Personal Development</option>
+      </select>
+
+      <label for="abstract">Abstract</label>
+      <textarea id="abstract" name="abstract" rows="3" required></textarea>
+
+      <label for="content_file">Upload content file (PDF or DOCX)</label>
+      <input type="file" name="content_file" id="content_file" required>
+
+      <button type="submit">Publish</button>
+    </form>
+  </div>
+</div>
+
+{% block content %}{% endblock %}
+
+<script>
+  function toggleMenu() {
+    document.getElementById('sideNav').classList.toggle('open');
+  }
+
+  function openModal() {
+    document.getElementById("articleModal").style.display = "flex";
+  }
+
+  function closeModal() {
+    document.getElementById("articleModal").style.display = "none";
+  }
+
+
+
+
+  function openArticleModal(element) {
+  // Get data from the clicked card
+  const title = element.getAttribute('data-title');
+  const author = element.getAttribute('data-author');
+  const year = element.getAttribute('data-year');
+  const abstract = element.getAttribute('data-abstract');
+  const downloadUrl = element.getAttribute('data-download-url');
+  const viewUrl = element.getAttribute('data-view-url');
+
+  // Set modal content
+  document.getElementById("modalArticleTitle").innerText = title;
+  document.getElementById("modalArticleAuthor").innerText = author;
+  document.getElementById("modalArticleYear").innerText = year;
+  document.getElementById("modalArticleAbstract").innerText = abstract;
+
+  document.getElementById("modalDownloadBtn").href = downloadUrl;
+  document.getElementById("modalViewBtn").href = viewUrl;
+
+  // Show modal
+  document.getElementById("articleDetailModal").style.display = "flex";
+}
+
+function closeArticleModal() {
+  document.getElementById("articleDetailModal").style.display = "none";
+}
+
+</script>
+
+</body>
+</html>

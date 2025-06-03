@@ -1,0 +1,317 @@
+/* === Reset & Base === */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  color: white;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* === Header === */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #032b44;
+  padding: 20px;
+  border-radius: 20px;
+  margin: 20px;
+  position: relative;
+}
+
+header h3 {
+  margin: 0;
+}
+
+header nav ul {
+  display: flex;
+  list-style: none;
+  gap: 15px;
+}
+
+header nav a {
+  color: white;
+  text-decoration: none;
+  padding: 8px 15px;
+  border-radius: 10px;
+}
+
+/* === Menu Toggle (Mobile) === */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+  margin-left: auto;
+}
+
+.menu-toggle span {
+  width: 25px;
+  height: 3px;
+  background: white;
+  border-radius: 2px;
+}
+
+/* === Side Navigation === */
+.side nav ul {
+  list-style: none;
+  flex-wrap: nowrap;
+  font-size: 20px;
+}
+
+.side nav li {
+  margin-bottom: 23px;
+}
+
+.side nav a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 10px;
+  white-space: nowrap;
+}
+
+/* === Active Navigation Highlight === */
+.current {
+  background-color: #1f5270;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 10px;
+  white-space: nowrap;
+  width: 100%;
+}
+
+/* === Search Area === */
+.search-area {
+  margin-bottom: 30px;
+}
+
+.search input {
+  padding: 15px;
+  border-radius: 20px;
+  border: none;
+  width: 100%;
+  max-width: 600px;
+}
+
+/* === Bottom Navigation (Mobile) === */
+.bottom {
+  margin: 20px;
+  overflow-x: auto;
+  display: none;
+  justify-content: center;
+}
+
+.bottom nav ul {
+  display: flex;
+  list-style: none;
+  gap: 10px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.bottom nav ul::-webkit-scrollbar {
+  display: none;
+}
+
+.bottom nav a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 10px;
+  white-space: nowrap;
+}
+
+.bottom nav a.active,
+.bottom nav a:hover {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+/* === Main Container & Cards === */
+.container {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  width: 95%;
+  margin-left: 30px;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  backdrop-filter: blur(15px);
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: 400px;
+  padding: 24px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.02);
+}
+
+.title {
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.author {
+  font-size: 0.9rem;
+  color: #ccc;
+  margin-bottom: 10px;
+}
+
+.abstract {
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+/* === Modal === */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0; 
+  top: 0;
+  width: 100%; 
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(3px);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #032b44;
+  padding: 30px;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 500px;
+  color: white;
+  position: relative;
+}
+
+.modal-content h2 {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+.modal-content label {
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.modal-content input,
+.modal-content textarea,
+.modal-content select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  margin-bottom: 10px;
+  font-family: inherit;
+}
+
+.modal-content button {
+  background-color: #1f5270;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.modal-content .close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 24px;
+  cursor: pointer;
+  color: white;
+}
+
+.button {
+  background-color: #1f5270;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #15425b;
+}
+
+
+/* === Media Queries === */
+@media (max-width: 768px) {
+  .bottom {
+    display: flex;
+    justify-content: start;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  header nav ul {
+    display: none;
+  }
+
+  .side-nav {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 250px;
+    height: 100vh;
+    background: #032b44;
+    padding: 60px 20px;
+    transition: right 0.3s ease;
+    z-index: 999;
+  }
+
+  .side-nav.open {
+    right: 0;
+  }
+
+  .side-nav ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .side-nav a {
+    color: white;
+    font-size: 1.1rem;
+    text-decoration: none;
+  }
+}

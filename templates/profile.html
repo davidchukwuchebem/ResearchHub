@@ -1,0 +1,156 @@
+{% extends "base.html" %}
+
+{% block title %}Articles{% endblock %}
+
+{% block content %}
+<!-- Styles -->
+<style>
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+
+  .modal-content {
+    background: #15425b;
+    padding: 30px;
+    max-width: 400px;
+    margin: 15% auto;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  }
+
+  .modal-actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+  .logout-btn {
+    background-color: #1f5270;
+    color: white;
+    text-decoration: none;
+  }
+
+  .logout-btn:hover {
+    background-color: #15425b;
+  }
+
+  .cancel-btn {
+    background-color: #ccc;
+    color: #333;
+  }
+
+  .cancel-btn:hover {
+    background-color: #bbb;
+  }
+
+  .profile {
+    border-radius: 16px;
+    color: #fff;
+    width: auto;
+    margin: 3% 3%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .profile button {
+    padding: 10px 30px;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    background-color: #1f5270;
+    cursor: pointer;
+  }
+
+  .profile .btn {
+    display: flex;
+    gap: 20px;
+  }
+</style>
+
+<!-- Logout Confirmation Modal -->
+<div id="logoutModal" class="modal">
+  <div class="modal-content">
+    <p>Are you sure you want to logout?</p>
+    <div class="modal-actions">
+      <a href="{% url 'signout' %}" ><button class="btn cancel-btn">Logout</button></a>
+      <button onclick="closeLogoutModal()" class="btn cancel-btn">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- Navigation -->
+<div class="bottom">
+  <nav>
+    <ul>
+      <li><a href="#" class="active">Education & Learning</a></li>
+      <li><a href="#">Technology</a></li>
+      <li><a href="#">Health</a></li>
+      <li><a href="#">Finance</a></li>
+      <li><a href="#">Entertainment</a></li>
+      <li><a href="#">Travel</a></li>
+      <li><a href="#">Personal Dev.</a></li>
+    </ul>
+  </nav>
+</div>
+
+<!-- User Profile -->
+<div class="profile">
+  <div>
+    {% if user.is_authenticated %}
+      <h1>{{ user.first_name }} {{ user.last_name }}</h1>
+      <p>@{{ user.username }}</p>
+      <p>{{ user.email }}</p>
+    {% endif %}
+  </div>
+  <div class="btn">
+    <button>Edit</button>
+    <button onclick="openLogoutModal()">Logout</button>
+  </div>
+</div>
+
+<!-- Article List -->
+<div class="container">
+  <main>
+    {% include 'components/category.html' %}
+  </main>
+
+  <main>
+    <div class="cards">
+      {% for article in articles %}
+        {% if article.author == request.user %}
+          {% include 'components/articles.html' %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  </main>
+</div>
+
+<!-- Modal Script -->
+<script>
+  function openLogoutModal() {
+    document.getElementById("logoutModal").style.display = "block";
+  }
+
+  function closeLogoutModal() {
+    document.getElementById("logoutModal").style.display = "none";
+  }
+</script>
+{% endblock %}

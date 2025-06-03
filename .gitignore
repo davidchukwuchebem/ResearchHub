@@ -1,0 +1,64 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environment files
+.env
+*.env
+
+# Django stuff:
+db.sqlite3
+media/
+migrations/
+local_settings.py
+
+# VSCode/IDE config
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Logs
+*.log
+
+# Virtual environment
+venv/
+env/
+ENV/
+
+# pip dependency cache
+pip-log.txt
+pip-delete-this-directory.txt
+
+# coverage and testing
+htmlcov/
+.coverage
+.tox/
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.pytest_cache/
+
+# mypy and pyright
+.mypy_cache/
+.pyright/
+
+# build
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Node (if using npm for frontend)
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
