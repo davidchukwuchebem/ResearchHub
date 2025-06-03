@@ -8,7 +8,7 @@ urlpatterns = [
     path('me/', UserProfile, name='user_profile'),
     # path('articles/', Articles, name='articles'),
     path('signup/', view=Signup, name='signup'),
-    path('signin/', view=Signin, name='signin'),
+    path('login/', view=Signin, name='signin'),
     path('signout/', view=Signout, name='signout'),
     path('create/', view=createArticle, name='create_article'), 
     path('article-detail/<int:pk>/', ArticleView, name='article_detail'), 

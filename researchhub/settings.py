@@ -159,6 +159,10 @@ else:
     CLOUDINARY_STORAGE = {
     'CLOUDINARY_URL': env('CLOUDINARY_URL'),
 }
+    
+
+LOGIN_URL = '/login/'
+
 
 
 # Default primary key field type
